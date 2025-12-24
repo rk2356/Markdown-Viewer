@@ -1,0 +1,5 @@
+{
+  "name": "ProMark Viewer",
+  "description": "A professional-grade, real-time Markdown editor and viewer with file upload, syntax highlighting, and PDF export capabilities.",
+  "requestFramePermissions": []
+}

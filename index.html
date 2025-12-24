@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProMark Viewer</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS with Typography Plugin -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    
+    <!-- Highlight.js Theme (GitHub Dark Dimmed) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark-dimmed.min.css">
+    
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              'custom-dark': '#30302e',
+              'custom-border': 'rgba(255, 255, 255, 0.08)',
+              brand: {
+                500: '#3b82f6',
+                600: '#2563eb',
+                200: '#bfdbfe',
+                300: '#93c5fd',
+                400: '#60a5fa',
+              },
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Custom Scrollbar for Dark Mode */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #4b4b49;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #60605e;
+      }
+
+      body {
+        background-color: #30302e;
+        color: #e2e8f0;
+      }
+
+      /* PROFESSIONAL PDF EXPORT STYLES */
+      @media print {
+        /* 1. Page Margin & Reset */
+        @page {
+          margin: 2cm;
+          size: auto;
+        }
+
+        /* 2. Reset Root Containers to allow natural flow */
+        html, body, #root, main {
+          background-color: white !important;
+          color: black !important;
+          height: auto !important;
+          min-height: auto !important;
+          width: 100% !important;
+          overflow: visible !important;
+          display: block !important;
+          position: relative !important;
+        }
+
+        /* 3. Hide UI Elements */
+        .no-print, header, aside, .editor-pane {
+          display: none !important;
+        }
+
+        /* 4. Ensure Preview Container Flows Properly */
+        #preview-container {
+          height: auto !important;
+          overflow: visible !important;
+          display: block !important;
+          width: 100% !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
+        /* 5. Typography Fixes for Print */
+        #printable-content {
+          margin: 0 !important;
+          width: 100% !important;
+          max-width: none !important;
+          color: black !important;
+        }
+
+        /* 6. Prose Overrides (Force Black on White) */
+        .prose-invert {
+          --tw-prose-body: #000 !important;
+          --tw-prose-headings: #000 !important;
+          --tw-prose-lead: #000 !important;
+          --tw-prose-links: #000 !important;
+          --tw-prose-bold: #000 !important;
+          --tw-prose-counters: #000 !important;
+          --tw-prose-bullets: #000 !important;
+          --tw-prose-hr: #000 !important;
+          --tw-prose-quotes: #000 !important;
+          --tw-prose-quote-borders: #ccc !important;
+          --tw-prose-captions: #000 !important;
+          --tw-prose-code: #000 !important;
+          --tw-prose-pre-code: #000 !important;
+          --tw-prose-pre-bg: #fff !important;
+          --tw-prose-th-borders: #000 !important;
+          --tw-prose-td-borders: #000 !important;
+        }
+
+        /* 7. Code Blocks */
+        pre {
+          border: 1px solid #ccc !important;
+          background: white !important;
+          color: black !important;
+          break-inside: avoid;
+          white-space: pre-wrap !important;
+        }
+        
+        code {
+           color: black !important;
+           border: 1px solid #ddd !important;
+        }
+
+        /* 8. Headings & Images */
+        h1, h2, h3 {
+          break-after: avoid;
+          page-break-after: avoid;
+          color: black !important;
+        }
+        img {
+          break-inside: avoid;
+          max-width: 100% !important;
+          box-shadow: none !important;
+          border: 0 !important;
+        }
+        
+        /* 9. Links */
+        a {
+            text-decoration: underline !important;
+            color: black !important;
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-markdown": "https://aistudiocdn.com/react-markdown@^10.1.0",
+    "rehype-highlight": "https://aistudiocdn.com/rehype-highlight@^7.0.2",
+    "remark-gfm": "https://aistudiocdn.com/remark-gfm@^4.0.1"
+  }
+}
+</script>
+</head>
+  <body class="bg-custom-dark text-slate-200 h-screen overflow-hidden print:h-auto print:overflow-visible print:bg-white">
+    <div id="root" class="h-full print:h-auto print:overflow-visible"></div>
+  </body>
+</html>
